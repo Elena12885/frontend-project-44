@@ -13,4 +13,11 @@ const brainGame = () => {
   return (`Congratulations, ${name}!`);
 };
 
-export { brainGame, getRandomInt };
+const getSmallerNumber = (numOne, numTwo) => {
+  if (numOne < numTwo) {
+    return numOne;
+  }
+  return numTwo;
+};
+
+export { brainGame, getRandomInt, getSmallerNumber };
