@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getRandomInt, getSmallerNumber } from './index.js';
+import { getRandomNumberRange, getSmallerNumber } from './index.js';
 
 const greatestCommonDivisor = (numOne, numTwo) => {
   const smallerNumber = getSmallerNumber(numOne, numTwo);
@@ -16,8 +16,8 @@ const greatestCommonDivisor = (numOne, numTwo) => {
 
 const userResponse = () => {
   for (let i = 0; i < 3; i += 1) {
-    const randomNumberOne = getRandomInt(100);
-    const randomNumberTwo = getRandomInt(100);
+    const randomNumberOne = getRandomNumberRange(1, 100);
+    const randomNumberTwo = getRandomNumberRange(1, 100);
     const rightAnswer = greatestCommonDivisor(randomNumberOne, randomNumberTwo);
     console.log(`Question: ${randomNumberOne} ${randomNumberTwo}`);
     const response = readlineSync.question('Your answer: ');
