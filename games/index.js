@@ -13,17 +13,16 @@ const getSmallerNumber = (numOne, numTwo) => {
   return numTwo;
 };
 
-const userResponse = (rightAnswer, question ) => {
+const userResponse = (rightAnswer, question) => {
   console.log(`Question: ${question}`);
   const response = readlineSync.question('Your answer: ');
   if (response !== rightAnswer) {
-    console.log(`${response} is wrong answer ;(. Correct answer was ${rightAnswer}.`); 
+    console.log(`${response} is wrong answer ;(. Correct answer was ${rightAnswer}.`);
     return ('false');
   }
   console.log('Correct!');
   return ('true');
 };
-
 
 const brainGame = (text, result) => {
   console.log('Welcome to the Brain Games!');

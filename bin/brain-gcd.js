@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import brainGame from '../games/gcd.js';
+import brainGCD from '../games/gcd.js';
 
-console.log(brainGame());
+console.log(brainGCD());

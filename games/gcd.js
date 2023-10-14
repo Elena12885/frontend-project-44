@@ -1,5 +1,6 @@
-import readlineSync from 'readline-sync';
-import { getRandomNumberRange, getSmallerNumber } from './index.js';
+import {
+  getRandomNumberRange, getSmallerNumber, brainGame, userResponse,
+} from './index.js';
 
 const greatestCommonDivisor = (numOne, numTwo) => {
   const smallerNumber = getSmallerNumber(numOne, numTwo);
@@ -14,31 +15,25 @@ const greatestCommonDivisor = (numOne, numTwo) => {
   return String(result);
 };
 
-const userResponse = () => {
+const getChecking = () => {
+  let result = ' ';
   for (let i = 0; i < 3; i += 1) {
     const randomNumberOne = getRandomNumberRange(1, 100);
     const randomNumberTwo = getRandomNumberRange(1, 100);
+    const question = `${randomNumberOne} ${randomNumberTwo}`;
     const rightAnswer = greatestCommonDivisor(randomNumberOne, randomNumberTwo);
-    console.log(`Question: ${randomNumberOne} ${randomNumberTwo}`);
-    const response = readlineSync.question('Your answer: ');
-    if (response !== rightAnswer) {
-      console.log(`${response} is wrong answer ;(. Correct answer was ${rightAnswer}.`);
-      return false;
+    result = userResponse(rightAnswer, question);
+    if (result === 'false') {
+      return result;
     }
-    console.log('Correct!');
   }
-  return true;
+  return result;
 };
 
-const brainGame = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('Find the greatest common divisor of given numbers.');
-  if (userResponse() !== true) {
-    return (`Let's try again, ${name}!`);
-  }
-  return (`Congratulations, ${name}!`);
+const brainGCD = () => {
+  const text = 'Find the greatest common divisor of given numbers.';
+  const result = brainGame(text, getChecking);
+  return result;
 };
 
-export default brainGame;
+export default brainGCD;

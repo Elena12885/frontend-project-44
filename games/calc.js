@@ -1,5 +1,4 @@
-import readlineSync from 'readline-sync';
-import { getRandomInt } from './index.js';
+import { getRandomInt, brainGame, userResponse } from './index.js';
 
 const getRandomOperator = (operators) => {
   const randomIndex = Math.floor(Math.random() * (operators.length - 1));
@@ -19,33 +18,27 @@ const calculatingExpression = (numOne, operators, namTwo) => {
   return String(result);
 };
 
-const userResponse = () => {
+const getChecking = () => {
+  let result = ' ';
   for (let i = 0; i < 3; i += 1) {
     const randomNumberOne = getRandomInt(100);
     const randomNumberTwo = getRandomInt(100);
     const operators = ['+', '-', '*'];
     const randomOperator = getRandomOperator(operators);
     const rightAnswer = calculatingExpression(randomNumberOne, randomOperator, randomNumberTwo);
-    console.log(`Question: ${randomNumberOne} ${randomOperator} ${randomNumberTwo}`);
-    const response = readlineSync.question('Your answer: ');
-    if (response !== rightAnswer) {
-      console.log(`${response} is wrong answer ;(. Correct answer was ${rightAnswer}.`);
-      return false;
+    const question = `${randomNumberOne} ${randomOperator} ${randomNumberTwo}`;
+    result = userResponse(rightAnswer, question);
+    if (result === 'false') {
+      return result;
     }
-    console.log('Correct!');
   }
-  return true;
+  return result;
 };
 
-const brainGame = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('What is the result of the expression?');
-  if (userResponse() !== true) {
-    return (`Let's try again, ${name}!`);
-  }
-  return (`Congratulations, ${name}!`);
+const brainCalc = () => {
+  const text = 'What is the result of the expression?';
+  const result = brainGame(text, getChecking);
+  return result;
 };
 
-export default brainGame;
+export default brainCalc;

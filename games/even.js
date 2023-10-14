@@ -1,4 +1,3 @@
-import readlineSync from 'readline-sync';
 import { brainGame, getRandomNumberRange, userResponse } from './index.js';
 
 const determiningTheParity = (number) => {
@@ -11,12 +10,12 @@ const determiningTheParity = (number) => {
 const getChecking = () => {
   let result = ' ';
   for (let i = 0; i < 3; i += 1) {
-   const random = getRandomNumberRange(2, 100);
-   const rightAnswer = determiningTheParity(random);
-   result = userResponse(rightAnswer, random);
-   if (result === 'false') {
-    return result;
-   }
+    const random = getRandomNumberRange(2, 100);
+    const rightAnswer = determiningTheParity(random);
+    result = userResponse(rightAnswer, random);
+    if (result === 'false') {
+      return result;
+    }
   }
   return result;
 };
