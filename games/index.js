@@ -13,31 +13,29 @@ const getSmallerNumber = (numOne, numTwo) => {
   return numTwo;
 };
 
-const userResponse = () => {
-  for (let i = 0; i < 3; i += 1) {
-    const rightAnswer = getRandomInt(100);
-    console.log('Question: ');
-    const response = readlineSync.question('Your answer: ');
-    if (response !== rightAnswer) {
-      console.log(`${response} is wrong answer ;(. Correct answer was ${rightAnswer}.`);
-      return false;
-    }
-    console.log('Correct!');
+const userResponse = (rightAnswer, question ) => {
+  console.log(`Question: ${question}`);
+  const response = readlineSync.question('Your answer: ');
+  if (response !== rightAnswer) {
+    console.log(`${response} is wrong answer ;(. Correct answer was ${rightAnswer}.`); 
+    return ('false');
   }
-  return true;
+  console.log('Correct!');
+  return ('true');
 };
 
-const brainGame = () => {
+
+const brainGame = (text, result) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  if (userResponse() !== true) {
+  console.log(`${text}`);
+  if (result() !== 'true') {
     return (`Let's try again, ${name}!`);
   }
   return (`Congratulations, ${name}!`);
 };
 
 export {
-  brainGame, getRandomInt, getSmallerNumber, getRandomNumberRange, randomIndex,
+  brainGame, getRandomInt, getSmallerNumber, getRandomNumberRange, randomIndex, userResponse,
 };

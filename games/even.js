@@ -1,6 +1,5 @@
 import readlineSync from 'readline-sync';
-
-const getRandomInt = (max) => Math.floor(Math.random() * max);
+import { brainGame, getRandomNumberRange, userResponse } from './index.js';
 
 const determiningTheParity = (number) => {
   if (number % 2 === 0) {
@@ -9,30 +8,23 @@ const determiningTheParity = (number) => {
   return 'no';
 };
 
-const userResponse = () => {
+const getChecking = () => {
+  let result = ' ';
   for (let i = 0; i < 3; i += 1) {
-    const random = getRandomInt(100);
-    const determining = determiningTheParity(random);
-    console.log(`Question: ${random}`);
-    const response = readlineSync.question('Your answer: ');
-    if (response !== determining) {
-      console.log(`${response} is wrong answer ;(. Correct answer was ${determining}.`);
-      return false;
-    }
-    console.log('Correct!');
+   const random = getRandomNumberRange(2, 100);
+   const rightAnswer = determiningTheParity(random);
+   result = userResponse(rightAnswer, random);
+   if (result === 'false') {
+    return result;
+   }
   }
-  return true;
+  return result;
 };
 
 const brainEven = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  if (userResponse() !== true) {
-    return (`Let's try again, ${name}!`);
-  }
-  return (`Congratulations, ${name}!`);
+  const text = 'Answer "yes" if the number is even, otherwise answer "no".';
+  const result = brainGame(text, getChecking);
+  return result;
 };
 
 export default brainEven;
