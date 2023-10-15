@@ -1,4 +1,4 @@
-import { getRandomInt, launchTheBrainGame, getUserResponse } from './index.js';
+import { getRandomInt, launchTheBrainGame, getUserResponse } from '../index.js';
 
 const getRandomOperator = (operators) => {
   const randomIndex = Math.floor(Math.random() * (operators.length - 1));

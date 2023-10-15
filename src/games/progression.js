@@ -1,6 +1,6 @@
 import {
   getRandomInt, getRandomNumberRange, getRandomIndex, launchTheBrainGame, getUserResponse,
-} from './index.js';
+} from '../index.js';
 
 const getArithmeticProgression = () => {
   const firstNuber = getRandomInt(20);

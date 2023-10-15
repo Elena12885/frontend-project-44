@@ -1,6 +1,6 @@
 import {
   getRandomNumberRange, getSmallerNumber, launchTheBrainGame, getUserResponse,
-} from './index.js';
+} from '../index.js';
 
 const getGreatestCommonDivisor = (numOne, numTwo) => {
   const smallerNumber = getSmallerNumber(numOne, numTwo);

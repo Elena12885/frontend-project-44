@@ -1,4 +1,4 @@
-import { launchTheBrainGame, getRandomNumberRange, getUserResponse } from './index.js';
+import { launchTheBrainGame, getRandomNumberRange, getUserResponse } from '../index.js';
 
 const determineTheParity = (number) => {
   if (number % 2 === 0) {

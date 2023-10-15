@@ -1,4 +1,4 @@
-import { getRandomNumberRange, launchTheBrainGame, getUserResponse } from './index.js';
+import { getRandomNumberRange, launchTheBrainGame, getUserResponse } from '../index.js';
 
 const getPrimeNumber = (number) => {
   let result = ' ';
