@@ -1,4 +1,4 @@
-import { launchTheBrainGame, getRandomNumberRange, getUserResponse } from '../index.js';
+import { launchTheBrainGame, getChecking } from '../index.js';
 
 const determineTheParity = (number) => {
   if (number % 2 === 0) {
@@ -7,22 +7,13 @@ const determineTheParity = (number) => {
   return 'no';
 };
 
-const getChecking = () => {
-  let result = ' ';
-  for (let i = 0; i < 3; i += 1) {
-    const random = getRandomNumberRange(2, 100);
-    const rightAnswer = determineTheParity(random);
-    result = getUserResponse(rightAnswer, random);
-    if (result === 'false') {
-      return result;
-    }
-  }
-  return result;
+const checkAnswer = () => {
+  return getChecking(determineTheParity);
 };
 
 const launchTheBrainEven = () => {
   const text = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const result = launchTheBrainGame(text, getChecking);
+  const result = launchTheBrainGame(text, checkAnswer);
   return result;
 };
 

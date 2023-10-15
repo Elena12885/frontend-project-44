@@ -1,4 +1,4 @@
-import { getRandomNumberRange, launchTheBrainGame, getUserResponse } from '../index.js';
+import { launchTheBrainGame, getChecking } from '../index.js';
 
 const getPrimeNumber = (number) => {
   let result = ' ';
@@ -14,22 +14,13 @@ const getPrimeNumber = (number) => {
   return result;
 };
 
-const getChecking = () => {
-  let result = ' ';
-  for (let i = 0; i < 3; i += 1) {
-    const randomNum = getRandomNumberRange(2, 100);
-    const rightAnswer = getPrimeNumber(randomNum);
-    result = getUserResponse(rightAnswer, randomNum);
-    if (result === 'false') {
-      return result;
-    }
-  }
-  return result;
+const checkAnswer = () => {
+  return getChecking(getPrimeNumber);
 };
 
 const launchTheBrainPrime = () => {
   const text = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const result = launchTheBrainGame(text, getChecking);
+  const result = launchTheBrainGame(text, checkAnswer);
   return result;
 };
 export default launchTheBrainPrime;

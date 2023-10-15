@@ -24,6 +24,19 @@ const getUserResponse = (rightAnswer, question) => {
   return ('true');
 };
 
+const getChecking = (func) => {
+  let result = ' ';
+  for (let i = 0; i < 3; i += 1) {
+    const randomNum = getRandomNumberRange(2, 100);
+    const rightAnswer = func(randomNum);
+    result = getUserResponse(rightAnswer, randomNum);
+    if (result === 'false') {
+      return result;
+    }
+  }
+  return result;
+};
+
 const launchTheBrainGame = (text, result) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
@@ -37,5 +50,5 @@ const launchTheBrainGame = (text, result) => {
 
 export {
   launchTheBrainGame, getRandomInt, getSmallerNumber,
-  getRandomNumberRange, getRandomIndex, getUserResponse,
+  getRandomNumberRange, getRandomIndex, getUserResponse, getChecking
 };
