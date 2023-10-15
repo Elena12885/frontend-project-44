@@ -8,12 +8,18 @@ const getRandomOperator = (operators) => {
 
 const calculatingExpression = (numOne, operators, namTwo) => {
   let result = 0;
-  if (operators === '+') {
-    result = numOne + namTwo;
-  } else if (operators === '-') {
-    result = numOne - namTwo;
-  } else if (operators === '*') {
-    result = numOne * namTwo;
+  switch (operators) {
+    case '+':
+      result = numOne + namTwo;
+      break;
+    case '-':
+      result = numOne - namTwo;
+      break;
+    case '*':
+      result = numOne * namTwo;
+      break;
+    default: console.log(`Calculations with the operator '${operators}' are not possible.`);
+      break;
   }
   return String(result);
 };
