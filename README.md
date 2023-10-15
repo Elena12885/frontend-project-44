@@ -2,11 +2,11 @@
 
 Mind Games is a set of five console games built on the principle of popular mobile applications for brain pumping. Each game asks questions that need to be answered correctly. After three correct answers, it is considered that the game is over. Incorrect answers end the game and offer to go through it again. Games:
 
-1.Calculator. Arithmetic expressions that need to be calculated.
-2.Progression. Search for missing numbers in a sequence of numbers.
-3.Definition of an even number.
-4.Determination of the greatest common divisor.
-5.Definition of a prime number.
+1. Calculator. Arithmetic expressions that need to be calculated.
+2. Progression. Search for missing numbers in a sequence of numbers.
+3. Definition of an even number.
+4. Determination of the greatest common divisor.
+5. Definition of a prime number.
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Elena12885/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/Elena12885/frontend-project-44/actions)
