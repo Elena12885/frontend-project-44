@@ -1,8 +1,8 @@
 import {
-  getRandomInt, getRandomNumberRange, randomIndex, brainGame, userResponse,
+  getRandomInt, getRandomNumberRange, getRandomIndex, launchTheBrainGame, getUserResponse,
 } from './index.js';
 
-const arithmeticProgression = () => {
+const getArithmeticProgression = () => {
   const firstNuber = getRandomInt(20);
   const arrayRange = getRandomNumberRange(5, 10);
   const preiod = getRandomNumberRange(1, 10);
@@ -14,7 +14,7 @@ const arithmeticProgression = () => {
   return result;
 };
 
-const gethiddenNumberArr = (arr, randomInd) => {
+const getHiddenNumberArr = (arr, randomInd) => {
   const result = [];
   for (let i = 0; i < arr.length; i += 1) {
     const hiddenNumber = (randomInd === arr[i]) ? '..' : arr[i];
@@ -26,11 +26,11 @@ const gethiddenNumberArr = (arr, randomInd) => {
 const getChecking = () => {
   let result = ' ';
   for (let i = 0; i < 3; i += 1) {
-    const str = arithmeticProgression();
-    const randomInd = str[randomIndex(str)];
+    const str = getArithmeticProgression();
+    const randomInd = str[getRandomIndex(str)];
     const rightAnswer = randomInd.toString();
-    const arr = gethiddenNumberArr(str, randomInd);
-    result = userResponse(rightAnswer, arr);
+    const arr = getHiddenNumberArr(str, randomInd);
+    result = getUserResponse(rightAnswer, arr);
     if (result === 'false') {
       return result;
     }
@@ -38,10 +38,10 @@ const getChecking = () => {
   return result;
 };
 
-const brainProgression = () => {
+const launchTheBrainProgression = () => {
   const text = 'What number is missing in the progression?';
-  const result = brainGame(text, getChecking);
+  const result = launchTheBrainGame(text, getChecking);
   return result;
 };
 
-export default brainProgression;
+export default launchTheBrainProgression;

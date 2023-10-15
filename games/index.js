@@ -4,7 +4,7 @@ const getRandomInt = (max) => Math.floor(Math.random() * max);
 
 const getRandomNumberRange = (min, max) => (Math.floor(Math.random() * (max - min + 1)) + min);
 
-const randomIndex = (arr) => Math.floor(Math.random() * (arr.length - 1));
+const getRandomIndex = (arr) => Math.floor(Math.random() * (arr.length - 1));
 
 const getSmallerNumber = (numOne, numTwo) => {
   if (numOne < numTwo) {
@@ -13,7 +13,7 @@ const getSmallerNumber = (numOne, numTwo) => {
   return numTwo;
 };
 
-const userResponse = (rightAnswer, question) => {
+const getUserResponse = (rightAnswer, question) => {
   console.log(`Question: ${question}`);
   const response = readlineSync.question('Your answer: ');
   if (response !== rightAnswer) {
@@ -24,17 +24,18 @@ const userResponse = (rightAnswer, question) => {
   return ('true');
 };
 
-const brainGame = (text, result) => {
+const launchTheBrainGame = (text, result) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   console.log(`${text}`);
   if (result() !== 'true') {
-    return (`Let's try again, ${name}!`);
+    return console.log(`Let's try again, ${name}!`);
   }
-  return (`Congratulations, ${name}!`);
+  return console.log(`Congratulations, ${name}!`);
 };
 
 export {
-  brainGame, getRandomInt, getSmallerNumber, getRandomNumberRange, randomIndex, userResponse,
+  launchTheBrainGame, getRandomInt, getSmallerNumber,
+  getRandomNumberRange, getRandomIndex, getUserResponse,
 };

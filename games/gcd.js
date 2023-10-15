@@ -1,8 +1,8 @@
 import {
-  getRandomNumberRange, getSmallerNumber, brainGame, userResponse,
+  getRandomNumberRange, getSmallerNumber, launchTheBrainGame, getUserResponse,
 } from './index.js';
 
-const greatestCommonDivisor = (numOne, numTwo) => {
+const getGreatestCommonDivisor = (numOne, numTwo) => {
   const smallerNumber = getSmallerNumber(numOne, numTwo);
   let result = 0;
   for (let i = 1; i < smallerNumber + 1; i += 1) {
@@ -21,8 +21,8 @@ const getChecking = () => {
     const randomNumberOne = getRandomNumberRange(1, 100);
     const randomNumberTwo = getRandomNumberRange(1, 100);
     const question = `${randomNumberOne} ${randomNumberTwo}`;
-    const rightAnswer = greatestCommonDivisor(randomNumberOne, randomNumberTwo);
-    result = userResponse(rightAnswer, question);
+    const rightAnswer = getGreatestCommonDivisor(randomNumberOne, randomNumberTwo);
+    result = getUserResponse(rightAnswer, question);
     if (result === 'false') {
       return result;
     }
@@ -30,10 +30,10 @@ const getChecking = () => {
   return result;
 };
 
-const brainGCD = () => {
+const launchTheBrainGCD = () => {
   const text = 'Find the greatest common divisor of given numbers.';
-  const result = brainGame(text, getChecking);
+  const result = launchTheBrainGame(text, getChecking);
   return result;
 };
 
-export default brainGCD;
+export default launchTheBrainGCD;

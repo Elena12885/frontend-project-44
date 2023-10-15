@@ -1,4 +1,4 @@
-import { getRandomInt, brainGame, userResponse } from './index.js';
+import { getRandomInt, launchTheBrainGame, getUserResponse } from './index.js';
 
 const getRandomOperator = (operators) => {
   const randomIndex = Math.floor(Math.random() * (operators.length - 1));
@@ -6,7 +6,7 @@ const getRandomOperator = (operators) => {
   return result;
 };
 
-const calculatingExpression = (numOne, operators, namTwo) => {
+const calculateTheExpression = (numOne, operators, namTwo) => {
   let result = 0;
   switch (operators) {
     case '+':
@@ -31,9 +31,9 @@ const getChecking = () => {
     const randomNumberTwo = getRandomInt(100);
     const operators = ['+', '-', '*'];
     const randomOperator = getRandomOperator(operators);
-    const rightAnswer = calculatingExpression(randomNumberOne, randomOperator, randomNumberTwo);
+    const rightAnswer = calculateTheExpression(randomNumberOne, randomOperator, randomNumberTwo);
     const question = `${randomNumberOne} ${randomOperator} ${randomNumberTwo}`;
-    result = userResponse(rightAnswer, question);
+    result = getUserResponse(rightAnswer, question);
     if (result === 'false') {
       return result;
     }
@@ -41,10 +41,10 @@ const getChecking = () => {
   return result;
 };
 
-const brainCalc = () => {
+const launchTheBrainCalc = () => {
   const text = 'What is the result of the expression?';
-  const result = brainGame(text, getChecking);
+  const result = launchTheBrainGame(text, getChecking);
   return result;
 };
 
-export default brainCalc;
+export default launchTheBrainCalc;
