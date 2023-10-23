@@ -1,19 +1,15 @@
-import { launchTheBrainGame, getChecking } from '../index.js';
+import { launchTheBrainGame, getRandomNumberRange } from '../index.js';
 
-const determineTheParity = (number) => {
-  if (number % 2 === 0) {
-    return 'yes';
-  }
-  return 'no';
-};
-
-const checkAnswer = () => {
-  return getChecking(determineTheParity);
+const determineTheParity = () => {
+  const randomNumber = getRandomNumberRange();
+  const result = (randomNumber % 2 === 0) ? 'yes': 'no';
+  console.log(`Question: ${randomNumber}`);
+  return result;
 };
 
 const launchTheBrainEven = () => {
-  const text = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const result = launchTheBrainGame(text, checkAnswer);
+  const description = 'Answer "yes" if the number is even, otherwise answer "no".';
+  const result = launchTheBrainGame(description, determineTheParity);
   return result;
 };
 

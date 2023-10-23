@@ -1,54 +1,24 @@
 import readlineSync from 'readline-sync';
 
-const getRandomInt = (max) => Math.floor(Math.random() * max);
+const getRandomNumberRange = (min = 2, max = 100) => (Math.floor(Math.random() * (max - min + 1)) + min);
 
-const getRandomNumberRange = (min, max) => (Math.floor(Math.random() * (max - min + 1)) + min);
-
-const getRandomIndex = (arr) => Math.floor(Math.random() * (arr.length - 1));
-
-const getSmallerNumber = (numOne, numTwo) => {
-  if (numOne < numTwo) {
-    return numOne;
-  }
-  return numTwo;
-};
-
-const getUserResponse = (rightAnswer, question) => {
-  console.log(`Question: ${question}`);
-  const response = readlineSync.question('Your answer: ');
-  if (response !== rightAnswer) {
-    console.log(`${response} is wrong answer ;(. Correct answer was ${rightAnswer}.`);
-    return ('false');
-  }
-  console.log('Correct!');
-  return ('true');
-};
-
-const getChecking = (func) => {
-  let result = ' ';
-  for (let i = 0; i < 3; i += 1) {
-    const randomNum = getRandomNumberRange(2, 100);
-    const rightAnswer = func(randomNum);
-    result = getUserResponse(rightAnswer, randomNum);
-    if (result === 'false') {
-      return result;
-    }
-  }
-  return result;
-};
-
-const launchTheBrainGame = (text, result) => {
+const launchTheBrainGame = (text, rightAnswer) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   console.log(`${text}`);
-  if (result() !== 'true') {
-    return console.log(`Let's try again, ${name}!`);
+  const numberRounds = 3;
+  for (let i = 0; i < numberRounds; i += 1) {
+    const rightAn = String(rightAnswer());
+    const response = readlineSync.question('Your answer: ');
+    if (response !== rightAn) {
+      console.log(`${response} is wrong answer ;(. Correct answer was ${rightAn}.`);
+      return console.log(`Let's try again, ${name}!`);
+    }
+  console.log('Correct!');
   }
   return console.log(`Congratulations, ${name}!`);
 };
 
-export {
-  launchTheBrainGame, getRandomInt, getSmallerNumber,
-  getRandomNumberRange, getRandomIndex, getUserResponse, getChecking
-};
+
+export { launchTheBrainGame, getRandomNumberRange };

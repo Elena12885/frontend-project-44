@@ -1,49 +1,26 @@
-import { getRandomInt, launchTheBrainGame, getUserResponse } from '../index.js';
+import { launchTheBrainGame, getRandomNumberRange } from '../index.js';
 
-const getRandomOperator = (operators) => {
-  const randomIndex = Math.floor(Math.random() * (operators.length - 1));
-  const result = operators[randomIndex];
-  return result;
-};
-
-const calculateTheExpression = (numOne, operators, namTwo) => {
-  let result = 0;
-  switch (operators) {
+const calculateTheExpression = () => {
+  const randomNumberOne = getRandomNumberRange();
+  const randomNumberTwo = getRandomNumberRange();
+  const operators = ['+', '-', '*'];
+  const randomOperator = operators[getRandomNumberRange(0, operators.length - 1)];
+  console.log(`Question: ${randomNumberOne} ${randomOperator} ${randomNumberTwo}`);
+  switch (randomOperator) {
     case '+':
-      result = numOne + namTwo;
-      break;
+      return randomNumberOne + randomNumberTwo;
     case '-':
-      result = numOne - namTwo;
-      break;
+      return randomNumberOne - randomNumberTwo;
     case '*':
-      result = numOne * namTwo;
-      break;
-    default: console.log(`Calculations with the operator '${operators}' are not possible.`);
-      break;
+      return randomNumberOne * randomNumberTwo;
+    default: 
+      throw new Error(`Calculations with the operator '${operators}' are not possible.`);
   }
-  return String(result);
-};
-
-const getChecking = () => {
-  let result = ' ';
-  for (let i = 0; i < 3; i += 1) {
-    const randomNumberOne = getRandomInt(100);
-    const randomNumberTwo = getRandomInt(100);
-    const operators = ['+', '-', '*'];
-    const randomOperator = getRandomOperator(operators);
-    const rightAnswer = calculateTheExpression(randomNumberOne, randomOperator, randomNumberTwo);
-    const question = `${randomNumberOne} ${randomOperator} ${randomNumberTwo}`;
-    result = getUserResponse(rightAnswer, question);
-    if (result === 'false') {
-      return result;
-    }
-  }
-  return result;
 };
 
 const launchTheBrainCalc = () => {
-  const text = 'What is the result of the expression?';
-  const result = launchTheBrainGame(text, getChecking);
+  const description = 'What is the result of the expression?';
+  const result = launchTheBrainGame(description, calculateTheExpression);
   return result;
 };
 
