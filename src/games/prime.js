@@ -1,7 +1,7 @@
-import { launchTheBrainGame, getRandomNumberRange, } from '../index.js';
+import { launchTheBrainGame, getRandNumRange } from '../index.js';
 
 const getPrimeNumber = () => {
-  const randomNumber = getRandomNumberRange();
+  const randomNumber = getRandNumRange();
   console.log(`Question: ${randomNumber}`);
   let result = ' ';
   if (randomNumber === 2) {

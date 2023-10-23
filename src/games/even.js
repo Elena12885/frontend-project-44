@@ -1,8 +1,8 @@
-import { launchTheBrainGame, getRandomNumberRange } from '../index.js';
+import { launchTheBrainGame, getRandNumRange } from '../index.js';
 
 const determineTheParity = () => {
-  const randomNumber = getRandomNumberRange();
-  const result = (randomNumber % 2 === 0) ? 'yes': 'no';
+  const randomNumber = getRandNumRange();
+  const result = (randomNumber % 2 === 0) ? 'yes' : 'no';
   console.log(`Question: ${randomNumber}`);
   return result;
 };

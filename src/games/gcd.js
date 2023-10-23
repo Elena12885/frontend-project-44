@@ -1,8 +1,8 @@
-import { getRandomNumberRange, launchTheBrainGame, } from '../index.js';
+import { getRandNumRange, launchTheBrainGame } from '../index.js';
 
 const getGreatestCommonDivisor = () => {
-  const randomNumberOne = getRandomNumberRange();
-  const randomNumberTwo = getRandomNumberRange();
+  const randomNumberOne = getRandNumRange();
+  const randomNumberTwo = getRandNumRange();
   console.log(`Question: ${randomNumberOne} ${randomNumberTwo}`);
   const smallerNumber = randomNumberOne < randomNumberTwo ? randomNumberOne : randomNumberTwo;
   let result = 0;
