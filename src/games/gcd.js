@@ -1,24 +1,30 @@
-import { getRandNumRange, launchTheBrainGame } from '../index.js';
+import launchTheBrainGame from '../index.js';
+import { getRandNumRange } from '../utils.js';
 
-const getGreatestCommonDivisor = () => {
-  const randomNumberOne = getRandNumRange();
-  const randomNumberTwo = getRandNumRange();
-  console.log(`Question: ${randomNumberOne} ${randomNumberTwo}`);
-  const smallerNumber = randomNumberOne < randomNumberTwo ? randomNumberOne : randomNumberTwo;
+const getGreatestCommonDivisor = (numberOne, numberTwo) => {
+  const smallerNumber = numberOne < numberTwo ? numberOne : numberTwo;
   let result = 0;
   for (let i = 1; i < smallerNumber + 1; i += 1) {
-    if (randomNumberOne === randomNumberTwo) {
-      result = randomNumberTwo;
-    } else if (randomNumberOne % i === 0 && randomNumberTwo % i === 0) {
+    if (numberOne === numberTwo) {
+      result = numberTwo;
+    } else if (numberOne % i === 0 && numberTwo % i === 0) {
       result = i;
     }
   }
   return result;
 };
 
+const expectedAnswer = () => {
+  const randomNumberOne = getRandNumRange();
+  const randomNumberTwo = getRandNumRange();
+  const question = `${randomNumberOne} ${randomNumberTwo}`;
+  const result = getGreatestCommonDivisor(randomNumberOne, randomNumberTwo);
+  return [question, result];
+};
+
 const launchTheBrainGCD = () => {
   const description = 'Find the greatest common divisor of given numbers.';
-  const result = launchTheBrainGame(description, getGreatestCommonDivisor);
+  const result = launchTheBrainGame(description, expectedAnswer);
   return result;
 };
 

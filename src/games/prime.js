@@ -1,24 +1,25 @@
-import { launchTheBrainGame, getRandNumRange } from '../index.js';
+import launchTheBrainGame from '../index.js';
+import { getRandNumRange } from '../utils.js';
 
-const getPrimeNumber = () => {
-  const randomNumber = getRandNumRange();
-  console.log(`Question: ${randomNumber}`);
-  let result = ' ';
-  if (randomNumber === 2) {
-    return 'yes';
-  }
-  for (let i = 2; i < randomNumber - 1; i += 1) {
-    if (randomNumber % i === 0) {
-      return 'no';
+const getPrimeNumber = (number) => {
+  for (let i = 2; i < number - 1; i += 1) {
+    if (number % i === 0 && number !== 2) {
+      return true;
     }
-    result = 'yes';
   }
-  return result;
+  return false;
+};
+
+const determineTheParity = () => {
+  const randomNumber = getRandNumRange();
+  const question = randomNumber;
+  const expectedAnswer = getPrimeNumber(randomNumber) ? 'no' : 'yes';
+  return [question, expectedAnswer];
 };
 
 const launchTheBrainPrime = () => {
   const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const result = launchTheBrainGame(description, getPrimeNumber);
+  const result = launchTheBrainGame(description, determineTheParity);
   return result;
 };
 export default launchTheBrainPrime;

@@ -1,10 +1,10 @@
-import { launchTheBrainGame, getRandNumRange } from '../index.js';
+import launchTheBrainGame from '../index.js';
+import { getRandNumRange, isEven } from '../utils.js';
 
 const determineTheParity = () => {
   const randomNumber = getRandNumRange();
-  const result = (randomNumber % 2 === 0) ? 'yes' : 'no';
-  console.log(`Question: ${randomNumber}`);
-  return result;
+  const expectedAnswer = isEven(randomNumber) ? 'yes' : 'no';
+  return [randomNumber, expectedAnswer];
 };
 
 const launchTheBrainEven = () => {
