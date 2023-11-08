@@ -1,7 +1,7 @@
 import launchTheBrainGame from '../index.js';
-import { getRandNumRange } from '../utils.js';
+import getRandomNumberRange from '../utils.js';
 
-const getPrimeNumber = (number) => {
+const isPrimeNumber = (number) => {
   for (let i = 2; i < number - 1; i += 1) {
     if (number % i === 0 && number !== 2) {
       return true;
@@ -11,9 +11,9 @@ const getPrimeNumber = (number) => {
 };
 
 const determineTheParity = () => {
-  const randomNumber = getRandNumRange();
+  const randomNumber = getRandomNumberRange();
   const question = randomNumber;
-  const expectedAnswer = getPrimeNumber(randomNumber) ? 'no' : 'yes';
+  const expectedAnswer = isPrimeNumber(randomNumber) ? 'no' : 'yes';
   return [question, expectedAnswer];
 };
 

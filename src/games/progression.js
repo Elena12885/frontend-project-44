@@ -1,5 +1,5 @@
 import launchTheBrainGame from '../index.js';
-import { getRandNumRange } from '../utils.js';
+import getRandomNumberRange from '../utils.js';
 
 const getArithmeticProgression = (firstNuber, arrayRange, preiod) => {
   const result = [];
@@ -11,18 +11,19 @@ const getArithmeticProgression = (firstNuber, arrayRange, preiod) => {
 };
 
 const getHiddenNumberArr = () => {
-  const firstNuber = getRandNumRange(0, 20);
-  const arrayRange = getRandNumRange(5, 10);
-  const preiod = getRandNumRange(1, 10);
+  const firstNuber = getRandomNumberRange(0, 20);
+  const arrayRange = getRandomNumberRange(5, 10);
+  const preiod = getRandomNumberRange(1, 10);
   const arr = getArithmeticProgression(firstNuber, arrayRange, preiod);
-  const randomInd = arr[getRandNumRange(0, arr.length - 1)];
+  const randomInd = arr[getRandomNumberRange(0, arr.length - 1)];
   const result = [];
   for (let i = 0; i < arr.length; i += 1) {
     const hiddenNumber = (randomInd === arr[i]) ? '..' : arr[i];
     result.push(hiddenNumber);
   }
   const question = result.join(' ');
-  return [question, randomInd];
+  const answer = String(randomInd);
+  return [question, answer];
 };
 
 const launchTheBrainProgression = () => {

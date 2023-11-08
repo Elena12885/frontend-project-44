@@ -1,5 +1,5 @@
 import launchTheBrainGame from '../index.js';
-import { getRandNumRange } from '../utils.js';
+import getRandomNumberRange from '../utils.js';
 
 const getGreatestCommonDivisor = (numberOne, numberTwo) => {
   const smallerNumber = numberOne < numberTwo ? numberOne : numberTwo;
@@ -15,10 +15,10 @@ const getGreatestCommonDivisor = (numberOne, numberTwo) => {
 };
 
 const expectedAnswer = () => {
-  const randomNumberOne = getRandNumRange();
-  const randomNumberTwo = getRandNumRange();
+  const randomNumberOne = getRandomNumberRange();
+  const randomNumberTwo = getRandomNumberRange();
   const question = `${randomNumberOne} ${randomNumberTwo}`;
-  const result = getGreatestCommonDivisor(randomNumberOne, randomNumberTwo);
+  const result = String(getGreatestCommonDivisor(randomNumberOne, randomNumberTwo));
   return [question, result];
 };
 

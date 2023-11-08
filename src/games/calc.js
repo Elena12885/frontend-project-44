@@ -1,26 +1,26 @@
 import launchTheBrainGame from '../index.js';
-import { getRandNumRange } from '../utils.js';
+import getRandomNumberRange from '../utils.js';
 
-const calculateTheExpression = (numOne, numTwo, operator) => {
+const calculateTheExpression = (numberOne, numberTwo, operator) => {
   switch (operator) {
     case '+':
-      return numOne + numTwo;
+      return numberOne + numberTwo;
     case '-':
-      return numOne - numTwo;
+      return numberOne - numberTwo;
     case '*':
-      return numOne * numTwo;
+      return numberOne * numberTwo;
     default:
       throw new Error(`Calculations with the operator '${operator}' are not possible.`);
   }
 };
 
 const expectedAnswer = () => {
-  const randomNumberOne = getRandNumRange();
-  const randomNumberTwo = getRandNumRange();
+  const randomNumberOne = getRandomNumberRange();
+  const randomNumberTwo = getRandomNumberRange();
   const operators = ['+', '-', '*'];
-  const randomOperator = operators[getRandNumRange(0, operators.length - 1)];
+  const randomOperator = operators[getRandomNumberRange(0, operators.length - 1)];
   const question = `${randomNumberOne} ${randomOperator} ${randomNumberTwo}`;
-  const result = calculateTheExpression(randomNumberOne, randomNumberTwo, randomOperator);
+  const result = String(calculateTheExpression(randomNumberOne, randomNumberTwo, randomOperator));
   return [question, result];
 };
 
